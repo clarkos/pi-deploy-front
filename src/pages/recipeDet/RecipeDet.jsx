@@ -55,10 +55,11 @@ const RecipeDet = ({
           <span>Key benefits</span>
           <p>{summary}</p>
         </div>
+        {steps?.length >= 1 &&
         <div className="ff__detail-instructions_hideshow">
           <button onClick={click}>Do you wanna try it?</button>
-        </div>
-        {bool && steps[0][1][0][0] !== "" && (
+        </div> }
+        {bool && steps?.length >= 1 && steps[0][1][0][0] !== "" && (
           <div className="ff__detail-instructions">
             <StepDet array={steps} action={click} />
           </div>

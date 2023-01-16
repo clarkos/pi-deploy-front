@@ -25,7 +25,11 @@ function App() {
           <Route component={NotFound} />
         </Switch>
       </div>
-      <Footer />
+      {location.pathname !== "/" ? (
+            <Footer />
+        ) : (
+          <></>
+        )}
     </div>
   );
 }
