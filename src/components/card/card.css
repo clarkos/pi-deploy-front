@@ -25,6 +25,19 @@
   margin-bottom: 5px;
 }
 
+.ff__recipeCard-score {
+  padding: 5px;
+  position: relative;
+  right: 110px;
+  top: -215px;
+  margin-bottom: -35px;
+  border: 1px solid #000;
+  border-radius: 10px 10px;
+  background-color: #F44336;
+  color: #fff;
+  width: 55px;
+}
+
 .ff__recipeCard-card p {
   font-size: 18px;
   font-weight: 800;
@@ -48,9 +61,5 @@
   
 }
 
-.ff__recipeCard-card_score {
-  font-size: 15px;
-  border: 1px solid #ff4820;
-  padding: 5px;
-}
+
 /* .ff__recipeCard-card {} */

@@ -208,9 +208,7 @@ const Create = () => {
                     />
                   </div>
                   {errors.score && <p className="danger">{errors.score}</p>}
-                  {errors.healthScore && (
-                    <p className="danger">{errors.healthScore}</p>
-                  )}
+                  {errors.healthScore && <p className="danger">{errors.healthScore}</p>}
                 </div>
               </div>
 

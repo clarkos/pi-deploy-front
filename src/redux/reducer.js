@@ -22,7 +22,7 @@ let initialState = {
   dietsLoaded: [],
   loading: false,
   reference: "",
-  pageReference: 1,
+  pageReference: 0,
 };
 
 export function reducer(state = initialState, action) {
@@ -71,28 +71,28 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         recipesLoaded: sortName(action.payload, state.recipesLoaded),
-        pageReference: 1,
+        pageReference: 0,
       };
 
     case SORT_SCORE:
       return {
         ...state,
         recipesLoaded: sortScore(action.payload, state.recipesLoaded),
-        pageReference: 1,
+        pageReference: 0,
       };
 
     case FILTER_DIET:
       return {
         ...state,
         recipesLoaded: filterByDiet(action.payload, state.recipesLoaded),
-        pageReference: 1,
+        pageReference: 0,
       };
     
     case FILTER_ORIGIN:
       return {
         ...state,
         recipesLoaded: filterByOrigin(action.payload, state.recipesLoaded),
-        pageReference: 1,
+        pageReference: 0,
       };
 
     case CLEAR_FILTERS:

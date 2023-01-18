@@ -1,14 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import RecipeCard from "../Components/Visual/Home/Card/RecipeCard";
+import { Card } from "../components";
 
-describe("<RecipeCard/>", () => {
+describe("<Card />", () => {
   describe("default", () => {
     beforeEach(() => {
       render(
         <MemoryRouter>
-          <RecipeCard name="it title" img='a' id='3'/>
+          <Card name="it title" img='a' id='3'/>
         </MemoryRouter>
       );
     });
@@ -21,7 +21,6 @@ describe("<RecipeCard/>", () => {
     it("renders 0 as score by default", () => {
       screen.getByText("0");
     });
-    
   });
 
 
@@ -29,7 +28,7 @@ describe("<RecipeCard/>", () => {
     beforeEach(() => {
       render(
         <MemoryRouter>
-          <RecipeCard name="it title" score='75' diets={["dairy free", "vegan"]} img='a' id='3'/>
+          <Card name="it title" score='75' diets={["dairy free", "vegan"]} img='a' id='3'/>
         </MemoryRouter>
       );
     });
@@ -38,7 +37,7 @@ describe("<RecipeCard/>", () => {
       screen.getByText("75");
     });
     it('renders diets correctly', () => {
-      screen.getByText("• dairy free • vegan");
+      screen.getByText("dairy free vegan");
     });
   })
 });

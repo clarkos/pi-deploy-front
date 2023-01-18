@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Card, NoFilter, NoSearch, Pagination } from "../../components";
+import { NotFound } from "../../pages";
+import { setLoading } from "../../redux/actions";
 import "./cards.css";
 
 const Cards = () => {
@@ -10,19 +12,17 @@ const Cards = () => {
   const reference = useSelector((state) => state.reference);
   const page = useSelector((state) => state.pageReference);
 
-  console.log(reference);
-
   let index = page * 9;
   let end = index + 9;
   let results =
-    recipes === [] || !Array.isArray(recipes) ? [] : recipes.slice(index, end);
+    recipes === [] || !Array.isArray(recipes)
+      ? setLoading()
+      : recipes.slice(index, end);
 
   return (
     <div className="ff__cards-main">
-      <div className="ff__cards-PagHolder">
-        {/* {results.length !== 0 && loading === false && <Pagination />} */}
-        {/* <p>page ref: {page}</p> */}
-      </div>
+      {recipes === [] && <NotFound />}
+      <div className="ff__cards-PagHolder"></div>
       {recipesUnfiltered.length > 0 &&
         reference !== "" &&
         results.length === 0 && <NoFilter />}
@@ -41,7 +41,7 @@ const Cards = () => {
                 img={r.image}
                 id={r.id}
                 diets={r.diets}
-                score={r.score}
+                healthScore={r.healthScore}
               />
             </div>
           ))

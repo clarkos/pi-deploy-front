@@ -7,17 +7,16 @@ import "./pag.css";
 const Pagination = () => {
   const pageRef = useSelector((state) => state.pageReference);
   const recipes = useSelector((state) => state.recipesLoaded);
-  
   const total = recipes.length;
   const pageNumbers = [];
-  for (let i = 0; i < Math.floor(total / 9); i++) {
-    pageNumbers.push(i + 1);
+  for (let i = 0; i < Math.ceil(total / 9); i++) {
+    pageNumbers.push(i+1);
   }
 
   if (recipes.length > 1) {
     return (
       <div className="ff__pag-container">
-        {pageRef <= 1 ? (
+        {pageRef <= 0 ? (
           ""
         ) : (
           <BtnTemp value={"Prev"} action={setPageRef} arg={pageRef - 1} />
@@ -25,10 +24,10 @@ const Pagination = () => {
         <div className="ff__pag-btn">
           {pageNumbers.map((number) => (
             <BtnTemp
-              style={pageRef === number ? "ff__pag-active" : ""}
+              style={pageRef === number-1 ? "ff__pag-active" : ""}
               value={number}
               action={setPageRef}
-              arg={number}
+              arg={number-1}
               key={number}
             />
           ))}

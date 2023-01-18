@@ -1,7 +1,7 @@
 import React from "react";
-import { fireEvent, render, screen , within} from "@testing-library/react";
+import { fireEvent, render, screen, within} from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import FormContainer from "../Components/Visual/Form/FormContainer";
+import { Create } from "../components";
 import '@testing-library/jest-dom/extend-expect'
 
 const action = () => {
@@ -34,7 +34,7 @@ describe("<Form/>", () => {
       const handleClick = jest.fn();
       render(
         <MemoryRouter>
-          <FormContainer
+          <NewRecipe
             submission={submission}
             dietsLoaded={diets}
             part={["", [[...stepModel]]]}
@@ -45,7 +45,6 @@ describe("<Form/>", () => {
             addStep={action}
             removeStep={action}
             danger={false}
-            submission={submission}
           />
         </MemoryRouter>
       );
@@ -95,7 +94,7 @@ describe("<Form/>", () => {
         const handleClick = jest.fn().mockImplementation((e) => e.preventDefault());
         render(
           <MemoryRouter>
-            <FormContainer
+            <NewRecipe
               submission={submission}
               dietsLoaded={diets}
               part={["", [[...stepModel]]]}
@@ -106,7 +105,6 @@ describe("<Form/>", () => {
               addStep={action}
               removeStep={action}
               danger={false}
-              submission={submission}
             />
           </MemoryRouter>
         );
@@ -117,7 +115,7 @@ describe("<Form/>", () => {
     it('changes title and summary placeholder if danger is true', () => {
         render(
             <MemoryRouter>
-              <FormContainer
+              <NewRecipe
                 submission={submission}
                 dietsLoaded={diets}
                 part={["", [[...stepModel]]]}
@@ -128,7 +126,6 @@ describe("<Form/>", () => {
                 addStep={action}
                 removeStep={action}
                 danger={true}
-                submission={submission}
               />
             </MemoryRouter>
           );

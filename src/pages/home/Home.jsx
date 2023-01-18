@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader, SearchBar, Menu } from "../../components";
-import { getRecipes, getTypes } from "../../redux/actions";
-import { Cards } from "../../pages";
+import { getRecipes, getTypes, setLoading } from "../../redux/actions";
+import { Cards, NotFound } from "../../pages";
 import "./home.css";
 
-const Home = () => { 
+const Home = () => {
   const preLoad = "";
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRecipes(preLoad));
-    dispatch(getTypes())
+    dispatch(getTypes());
   }, [dispatch]);
 
   const reference = useSelector((state) => state.reference);
@@ -38,13 +38,15 @@ const Home = () => {
           <p>{title}</p>
           <SearchBar />
         </div>
-        <div className="ff__home-heading">
-          <Menu />
-        </div>
+        {recipesUnfiltered?.length > 0 ? (<>
+          <div className="ff__home-heading">
+            <Menu />
+          </div>
+        </>) : (
+          <></>
+        )}
         <div className="ff__home-results">
-          {recipesUnfiltered.length === 0 && reference === "" && !loading && (
-            <Loader />
-          )}
+
           <div className="ff__home-cards">
             {loading ? <Loader /> : <Cards />}
           </div>

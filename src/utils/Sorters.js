@@ -9,7 +9,7 @@ const scoreSort = (num, property) => {
 }
 
 const nameSort = (num, property) => {
-  return function (a, b) {
+  return (a, b) => {
     if (num === 1) {
       return b[property].localeCompare(a[property]);
     } else {
@@ -25,7 +25,7 @@ const sortName = (num, array) => {
 
 const sortScore = (num, array) => {
   if (num !== 1 && num !== -1) return console.log("first arg must be 1 or -1");
-  return array.sort(scoreSort(num, "score"));
+  return array.sort(scoreSort(num, "healthScore"));
 };
 
 export { sortName, sortScore };

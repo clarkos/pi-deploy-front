@@ -2,7 +2,8 @@ import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import DetailsContainer from "../Components/Visual/Details/DetailsContainer";
+import { Detail } from "../components";
+import { RecipeDet } from "../pages";
 
 // bool, click, name, summary, score, healthScore, diets, dishTypes, image, steps
 let bool = false;
@@ -20,15 +21,15 @@ describe("<RecipeCard/>", () => {
     beforeEach(() => {
       render(
         <MemoryRouter>
-          <DetailsContainer
+          <RecipeDet
             name="TITLE"
             bool={false}
             diets={diets}
             dishTypes={dishTypes}
             click={click}
-            summary="summary"
-            score="3"
-            healthScore="4"
+            summary="a text that sims the summary"
+            score="30"
+            healthScore="40"
             image="asd"
             steps={[["", [["1", "paso uno"],["2", 'paso dos']]]]}
           />
@@ -68,7 +69,7 @@ describe("<RecipeCard/>", () => {
     beforeEach(() => {
       render(
         <MemoryRouter>
-          <DetailsContainer
+          <RecipeDet
             name="TITLE"
             bool={true}
             diets={diets}
