@@ -14,8 +14,8 @@ export const POST_RECIPE = "POST_RECIPE";
 export const FILTER_ORIGIN = "FILTER_ORIGIN";
 
 export const getRecipes = (name) => {
-  let url = "http://localhost:3001/recipes";
-  // let url = "https://pi-food-backend.onrender.com/recipes";
+  // let url = "http://localhost:3001/recipes";
+  let url = "https://pi-food-backend.onrender.com/recipes";
   if (name !== "") {
     let fixedName = name.toLowerCase();
     url = url.concat(fixedName);
@@ -39,8 +39,8 @@ export const getDetails = (id) => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/recipes/${id}`
-        // `https://pi-food-backend.onrender.com/recipes/${id}`
+        // `http://localhost:3001/recipes/${id}`
+        `https://pi-food-backend.onrender.com/recipes/${id}`
       );
       const json = await response.json();
       console.log("get details ", json); //  ###############   control
@@ -56,8 +56,8 @@ export const getDetails = (id) => {
 
 export const getTypes = () => {
   return async (dispatch) => {
-    const response = await fetch(`http://localhost:3001/types/`);
-    // const response = await fetch(`https://pi-food-backend.onrender.com/types/`);
+    // const response = await fetch(`http://localhost:3001/types/`);
+    const response = await fetch(`https://pi-food-backend.onrender.com/types/`);
     const json = await response.json();
     dispatch({
       type: GET_TYPES,
@@ -68,8 +68,8 @@ export const getTypes = () => {
 
 export const postRecipe = (data) => {
   console.log("post recipe ", data); //  ###################   control
-  axios.post(`http://localhost:3001/recipe`, data);
-  // axios.post(`https://pi-food-backend.onrender.com/recipe`, data);
+  // axios.post(`http://localhost:3001/recipe`, data);
+  axios.post(`https://pi-food-backend.onrender.com/recipe`, data);
   return (dispatch) => {
     dispatch({ type: POST_RECIPE });
   };
