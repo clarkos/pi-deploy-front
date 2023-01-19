@@ -49,6 +49,9 @@ export function reducer(state = initialState, action) {
         dietsLoaded: sortName(-1, action.payload),
       };
     
+      case POST_RECIPE:
+        return { ...state };
+
     case SET_LOADING:
       return {
         ...state,
@@ -100,9 +103,6 @@ export function reducer(state = initialState, action) {
         ...state,
         recipesLoaded: state.recipesUnfiltered,
       };
-
-    case POST_RECIPE:
-      return { ...state };
 
     default:
       return state;

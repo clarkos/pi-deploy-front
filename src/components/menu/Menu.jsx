@@ -21,11 +21,10 @@ const Origin = () => {
       <p>Data Origin</p>
       <OrigFilter origin="api" />
       <OrigFilter origin="db" />
-      <BtnTemp action={ clearFilters } value="db+API" />
+      <BtnTemp action={clearFilters} value="db+API" />
     </div>
   );
-}
-
+};
 
 const Filter = ({
   innerLeft,
@@ -88,11 +87,14 @@ const Menu = () => {
           />
         </div>
       </div>
-      <div className="ff__menu-filter_diets">
-        <Diets />
+      <div className="ff__menu-filter_diets-container">
+        <p>Filter by Diets</p>
+        <div className="ff__menu-filter_diets">
+          <Diets />
+        </div>
       </div>
       <ClearFilters />
-      <p>Results: {recipes.length}</p>
+      <p className="ff__menu-filter_results">Results: {recipes.length}</p>
     </div>
   );
 };

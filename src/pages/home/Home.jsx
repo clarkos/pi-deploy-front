@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader, SearchBar, Menu } from "../../components";
-import { getRecipes, getTypes, setLoading } from "../../redux/actions";
-import { Cards, NotFound } from "../../pages";
+import { getRecipes, getTypes } from "../../redux/actions";
+import { Cards } from "../../pages";
 import "./home.css";
 
 const Home = () => {
@@ -38,18 +38,21 @@ const Home = () => {
           <p>{title}</p>
           <SearchBar />
         </div>
-        {recipesUnfiltered?.length > 0 ? (<>
-          <div className="ff__home-heading">
-            <Menu />
-          </div>
-        </>) : (
+        {recipesUnfiltered?.length > 0 ? (
+          <>
+            <div className="ff__home-heading">
+              <Menu />
+            </div>
+          </>
+        ) : (
           <></>
         )}
         <div className="ff__home-results">
-
-          <div className="ff__home-cards">
-            {loading ? <Loader /> : <Cards />}
-          </div>
+        {recipesUnfiltered.length !== 0 && !loading ? (
+            <div className="ff__home-cards">
+              <Cards />
+            </div>
+          ) : <Loader />}
         </div>
       </div>
     </div>

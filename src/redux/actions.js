@@ -19,7 +19,7 @@ export const getRecipes = (name) => {
   if (name !== "") {
     let fixedName = name.toLowerCase();
     url = url.concat(fixedName);
-    console.log(url);                    //  ###############   control
+    // console.log(url);                    //  ###############   control
   }
   return async (dispatch) => {
     try {
@@ -67,7 +67,7 @@ export const getTypes = () => {
 };
 
 export const postRecipe = (data) => {
-  console.log("post recipe ", data); //  ###################   control
+  // console.log("post recipe ", data); //  ###################   control
   // axios.post(`http://localhost:3001/recipe`, data);
   axios.post(`https://pi-food-backend.onrender.com/recipe`, data);
   return (dispatch) => {
